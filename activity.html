@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ฟอร์มกิจกรรม</title>
+    <style>
+        /* สไตล์พื้นฐาน */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f3e7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 800px;
+            height: 80vh;
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>กำลังโหลดแบบฟอร์ม...</h2>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdQ_uaHQolMBnG_Kncbf9b6kcPHIZ1CShw2mSvDX9Ci4zw5Jg/viewform?embedded=true"
+                frameborder="0">กำลังโหลด…</iframe>
+    </div>
+
+    <script>
+        // ใช้ Promise เพื่อจัดการเวลาให้หน้าอยู่เป็นเวลา 3 วินาที
+        function delayRedirect() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve();
+                }, 3000); // รอ 3 วินาที
+            });
+        }
+
+        window.onload = async function() {
+            // รอ 3 วินาทีแล้วเปลี่ยนเส้นทาง
+            await delayRedirect();
+            window.location.href = "https://dark123351.github.io/docs.google.com-forms-/"; // ไปยังหน้าล็อกอิน
+        };
+    </script>
+
+</body>
+</html>
